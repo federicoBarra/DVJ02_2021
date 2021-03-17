@@ -1,0 +1,56 @@
+Semana 01
+
+https://www.solarsystemscope.com/textures/
+
+
+class Scene
+{
+	Lista de GameObjects
+
+}
+
+
+
+
+class GameObject
+{
+	Transform tranform;
+	Lista de componentes;
+
+
+}
+
+
+public class Camera : MonoBehaviour
+{
+
+
+}
+
+
+tranform.parent
+
+Apreto Play
+
+for de todos los gameobjects de la escena
+{
+	for de cada componente de ese gameobject
+	{
+		go.Start();
+	}
+}
+
+En modo Play todo los frames unity hace:
+
+for de todos los gameobjects de la escena
+{
+	for de cada componente de ese gameobject
+	{
+		go.Update();
+	}
+}
+
+https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
+https://docs.unity3d.com/Manual/ExecutionOrder.html
+
+https://www.jetbrains.com/es-es/community/education/#students

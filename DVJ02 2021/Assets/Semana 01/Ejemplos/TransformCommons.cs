@@ -6,27 +6,37 @@ namespace DVJ02.Clase03
 {
     public class TransformCommons : MonoBehaviour
     {
-	    //public MiScript ms;
-	    //public MiScript[] msArray;
+        //public MiScript ms;
+        //public MiScript[] msArray;
 
-		private void Start()
+        public Vector3 v3 = new Vector3(0, 0, 0);
+
+        private void Start()
         {
 
 	        //msArray = GetComponentsInChildren<MiScript>();
 
+            //Vector3 v3 = new Vector3(0,0,0);
+
 			Transform t = this.transform;
 
-            Debug.Log("transform.position: " + transform.position);
-            Debug.Log("transform.localPosition: " + transform.localPosition);
+            Debug.Log(name + ": t.position: " + t.position);
+            Debug.Log(name + ": t.localPosition: " + t.localPosition);
 
-            Debug.Log("transform.rotation: " + transform.rotation);
-            Debug.Log("transform.localRotation: " + transform.localRotation);
+            Debug.Log(name + ": t.rotation: " + t.rotation);
+            Debug.Log(name + ": t.localRotation: " + t.localRotation);
 
-            Debug.Log("transform.lossyScale: " + transform.lossyScale);
-            Debug.Log("transform.localScale: " + transform.localScale);
+            Debug.Log(name + ": t.lossyScale: " + t.lossyScale);
+            Debug.Log(name + ": t.localScale: " + t.localScale);
 
 	        //ms.enabled = false;
 	        //etc
         }
+
+        void Update()
+        {
+            transform.position = v3;
+        }
+
     }
 }
