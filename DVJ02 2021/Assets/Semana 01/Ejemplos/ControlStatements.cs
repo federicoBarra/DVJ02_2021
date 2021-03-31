@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DVJ02.Clase03
+namespace DVJ02.Semana01
 {
     public class ControlStatements : MonoBehaviour, EjemploInterface
     {

@@ -1,56 +1,101 @@
 ﻿using System;
+using DVJ02.Semana02;
 using UnityEngine;
 
-public class Planet : MonoBehaviour
+namespace DVJ02.Semana01
 {
-    //void Awake()
-    //{
-    //    Debug.Log("Planet Awake");
-    //}
-
-    public float speed = 5;
-    public float radius = 2;
-    public float angle = 0;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class Planet : MonoBehaviour
     {
-        Debug.Log("Planet Started");
-    }
+        [Serializable]
+        public class PlanetData
+        {
+            public float traslationRadius;
+            public float traslationSpeed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //transform.position += Vector3.right * speed * Time.deltaTime;
+            public Vector3 rotationAxis;
+            public float rotationSpeed;
 
-        Vector3 v3 = Vector3.zero;
-        angle += speed * Time.deltaTime;
-        //Math.cos
+            public float size = 1;
 
-        v3.x = radius * Mathf.Cos(angle);
-        v3.z = radius * Mathf.Sin(angle);
+            public Material mat;
+        }
 
-        transform.position = v3;
+        //void Awake()
+        //{
+        //    Debug.Log("Planet Awake");
+        //}
 
-        //MAthf.Cos()
-        //MAthf.Sin()
+        public float speed = 5;
+        public float radius = 2;
+        public float angle = 0;
 
-        //Ecuación paramétrica círculo
-        //x = r cos t;
-        //z = r sin t;
-        //Centro en punto (a,b) con un radio r
+        public float rotationAngle = 0;
 
-        //Debug.Log("Planet Update: " + Time.deltaTime);
-    }
+        public Vector3 wantedScale;
 
-    void OnDisable()
-    {
-        Debug.Log("Planet Disabled");
-    }
+        public float rotationSpeed = 5;
 
-    void OnEnable()
-    {
-        Debug.Log("Planet Enabled");
+        public Vector3 rotationDirection;
+
+        //public void Init(float radius,float speed,float size,...etc )
+        public void Init(PlanetData pd)
+        {
+            radius = pd.traslationRadius;
+            speed = pd.traslationSpeed;
+            rotationDirection = pd.rotationAxis;
+            rotationSpeed = pd.rotationSpeed;
+            wantedScale = Vector3.one * pd.size;
+            GetComponent<MeshRenderer>().material = pd.mat;
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            Debug.Log("Planet Started");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //transform.position += Vector3.right * speed * Time.deltaTime;
+
+            Vector3 v3 = Vector3.zero;
+            angle += speed * Time.deltaTime;
+            //Math.cos
+            //0 - 360
+            //0 - 2pi (3.14)
+            v3.x = radius * Mathf.Cos(angle);
+            v3.z = radius * Mathf.Sin(angle);
+
+            transform.position = v3;
+            
+            //transform.rotation = Quaternion.Euler(0, rotationAngle, 0); // (x,y,z,w) = 0.1,0.2,0.6,0.1
+
+            transform.localScale = wantedScale;
+
+            transform.Rotate(rotationDirection * rotationSpeed * Time.deltaTime);
+            //transform.Rotate()
+
+            //Debug.Log("Rotation en x: " + transform.rotation.x);
+            //MAthf.Cos()
+            //MAthf.Sin()
+
+            //Ecuación paramétrica círculo
+            //x = r cos t;
+            //z = r sin t;
+            //Centro en punto (a,b) con un radio r
+
+            //Debug.Log("Planet Update: " + Time.deltaTime);
+        }
+
+        void OnDisable()
+        {
+            Debug.Log("Planet Disabled");
+        }
+
+        void OnEnable()
+        {
+            Debug.Log("Planet Enabled");
+        }
     }
 }

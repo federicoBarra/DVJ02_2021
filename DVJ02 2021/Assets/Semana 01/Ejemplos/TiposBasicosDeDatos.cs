@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DVJ02.Clase03
+namespace DVJ02.Semana01
 {
 public class TiposBasicosDeDatos : MonoBehaviour
 {
@@ -32,6 +31,27 @@ public class TiposBasicosDeDatos : MonoBehaviour
         public bool b;
     }
     public ClaseBasica ejemploClase;
+
+    //public float Prop;
+    public float Prop { get; set; }
+
+    //PascalCase -> Metodos, properties, events
+    //camelCase -> variables de clase
+    //_camelCase -> parametros de metodo
+
+    void addValue(int value)
+    {
+
+    }
+
+    void ChangeSomething(int _entero)
+    {
+        Debug.Log(_entero);
+        Debug.Log(entero);
+        entero = _entero;
+    }
+
+
 
     //------------------------------------------------ Method
     public static void Method01() { }

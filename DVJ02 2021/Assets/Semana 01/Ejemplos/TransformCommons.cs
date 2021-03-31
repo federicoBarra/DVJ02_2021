@@ -1,23 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DVJ02.Clase03
+namespace DVJ02.Semana01
 {
     public class TransformCommons : MonoBehaviour
     {
-        //public MiScript ms;
-        //public MiScript[] msArray;
-
         public Vector3 v3 = new Vector3(0, 0, 0);
 
         private void Start()
         {
-
-	        //msArray = GetComponentsInChildren<MiScript>();
-
-            //Vector3 v3 = new Vector3(0,0,0);
-
 			Transform t = this.transform;
 
             Debug.Log(name + ": t.position: " + t.position);
@@ -28,9 +18,6 @@ namespace DVJ02.Clase03
 
             Debug.Log(name + ": t.lossyScale: " + t.lossyScale);
             Debug.Log(name + ": t.localScale: " + t.localScale);
-
-	        //ms.enabled = false;
-	        //etc
         }
 
         void Update()
