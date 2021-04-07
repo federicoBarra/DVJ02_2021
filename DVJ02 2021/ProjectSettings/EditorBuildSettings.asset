@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Semana 03/02 Scene Management/SceneManagementExample.unity
+    guid: 644d6b7c4aade9f46af94d871be1ead0
+  - enabled: 1
+    path: Assets/Semana 03/02 Scene Management/SceneManagementExample 02.unity
+    guid: 48e187323c3cdbb488bbc3627da1d969
   m_configObjects: {}

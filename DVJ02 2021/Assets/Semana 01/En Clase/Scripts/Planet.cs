@@ -18,6 +18,8 @@ namespace DVJ02.Semana01
             public float size = 1;
 
             public Material mat;
+            public bool hasAtmosphere;
+            public Material atmosphereMat;
         }
 
         //void Awake()
@@ -37,6 +39,9 @@ namespace DVJ02.Semana01
 
         public Vector3 rotationDirection;
 
+        public GameObject atmosfera;
+        public GameObject luna;
+
         //public void Init(float radius,float speed,float size,...etc )
         public void Init(PlanetData pd)
         {
@@ -45,6 +50,9 @@ namespace DVJ02.Semana01
             rotationDirection = pd.rotationAxis;
             rotationSpeed = pd.rotationSpeed;
             wantedScale = Vector3.one * pd.size;
+            atmosfera.SetActive(pd.hasAtmosphere);
+            enabled = true;
+            atmosfera.GetComponent<MeshRenderer>().material = pd.atmosphereMat;
             GetComponent<MeshRenderer>().material = pd.mat;
         }
 
@@ -52,6 +60,19 @@ namespace DVJ02.Semana01
         void Start()
         {
             Debug.Log("Planet Started");
+
+            foreach (Transform child in transform)
+            {
+                Debug.Log("child name: " + child.name);
+            }
+
+            MeshRenderer unoSolo = GetComponentInChildren<MeshRenderer>();
+
+            MeshRenderer[] todos = GetComponentsInChildren<MeshRenderer>();
+
+            //GameObject go = GameObject.Find("Luna"); ESTO NO
+
+            //atmosfera = transform.GetChild(0).gameObject;
         }
 
         // Update is called once per frame

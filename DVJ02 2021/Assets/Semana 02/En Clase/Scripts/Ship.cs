@@ -11,21 +11,21 @@ public class Ship : MonoBehaviour
 {
     [Header("Cosas del script")]
     public float speed;
-    [Header("Referencias")]
-    public List<Transform> planetas;
-    [Header("Data")]
-    public float speedData;
-
-    [System.NonSerialized]
-    public float datoLoco;
-    [HideInInspector]
-    public float datoLoco02;
-
-    //[MyAtributoLoco]
-    public float datoLoco03;
-
-    [Header("DEBUG")]
-    public int planetsCount;
+   //[Header("Referencias")]
+   //public List<Transform> planetas;
+   //[Header("Data")]
+   //public float speedData;
+   //
+   //[System.NonSerialized]
+   //public float datoLoco;
+   //[HideInInspector]
+   //public float datoLoco02;
+   //
+   ////[MyAtributoLoco]
+   //public float datoLoco03;
+   //
+   //[Header("DEBUG")]
+   //public int planetsCount;
 
     //public int planetsCount;
     //public int planetsCount;
@@ -33,75 +33,77 @@ public class Ship : MonoBehaviour
 
     void Start()
     {
-        foreach (Transform planeta in planetas)
-        {
-            Debug.Log("nombre: " + planeta.gameObject.name);
-        }
-
-        Debug.Log(transform);
-        Debug.Log(gameObject);
+        //foreach (Transform planeta in planetas)
+        //{
+        //    Debug.Log("nombre: " + planeta.gameObject.name);
+        //}
+        //
+        //Debug.Log(transform);
+        //Debug.Log(gameObject);
         //Debug.Log(transform.gameObject.transform.gameObject.transform.transform);
 
-        Debug.Log("");
-        Debug.LogWarning("");
-        Debug.LogError("");
+        //Debug.Log("");
+        //Debug.LogWarning("");
+        //Debug.LogError("");
 
     }
 
-    private bool alive = true;
-    private bool isPlayerControlled = true;
-
-    public float tiempo;
+    //public bool alive = true;
+    //public bool isPlayerControlled = true;
+    //
+    //public float tiempo;
 
     void Update()
     {
-        if (!alive)
-            return;
-
-        if (isPlayerControlled)
-            return;
-
-        planetsCount = planetas.Count;
+        //if (!alive)
+        //    return;
+        //
+        //if (isPlayerControlled)
+        //    return;
+        //
+        //planetsCount = planetas.Count;
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 
         Vector3 direccion = new Vector3(hor, 0, ver);
 
+        Vector3 lastPosition = transform.position;
+        Vector3 newPosition = transform.position + direccion * speed * Time.deltaTime;
 
-        transform.position += direccion * speed * Time.deltaTime;
+        transform.position += newPosition;
 
-        tiempo += Time.deltaTime;
-        float val = Mathf.Sin(tiempo);
-        FindObjectOfType<Light>().intensity = 1 + val * 2;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //Debug.Break();
-            Debug.Log("REcien aprete: ");
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("Estoy aprentando: ");
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Debug.Log("solte la tecla: ");
-        }
+        //tiempo += Time.deltaTime;
+        //float val = Mathf.Sin(tiempo);
+        //FindObjectOfType<Light>().intensity = 1 + val * 2;
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //{
+        //    //Debug.Break();
+        //    Debug.Log("REcien aprete: ");
+        //}
+        //
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    Debug.Log("Estoy aprentando: ");
+        //}
+        //
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    Debug.Log("solte la tecla: ");
+        //}
 
         //Debug.Log("horizontal: " + hor);
     }
 
 
-    void Die()
-    {
-        if (!alive)
-            return;
-
-        alive = false;
-
-        //cambia material a nave destroy
-        //Destro
-    }
+    //void Die()
+    //{
+    //    if (!alive)
+    //        return;
+    //
+    //    alive = false;
+    //
+    //    //cambia material a nave destroy
+    //    //Destro
+    //}
 
 }

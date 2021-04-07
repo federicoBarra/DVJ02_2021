@@ -454,18 +454,24 @@ MonoBehaviour:
     rotationSpeed: 5
     size: 1
     mat: {fileID: 2100000, guid: b449cfefa32a7a5488c588bae335378d, type: 2}
+    hasAtmosphere: 0
+    atmosphereMat: {fileID: 0}
   - traslationRadius: 4
     traslationSpeed: 5
     rotationAxis: {x: 0, y: 1, z: 0}
     rotationSpeed: 5
     size: 1.5
     mat: {fileID: 2100000, guid: a96ef2d299eddb94bb5fcb297e993857, type: 2}
+    hasAtmosphere: 0
+    atmosphereMat: {fileID: 0}
   - traslationRadius: 6
     traslationSpeed: 5
     rotationAxis: {x: 0, y: 1, z: 0}
     rotationSpeed: 5
     size: 0.5
     mat: {fileID: 2100000, guid: 349eb2277627b6e45b3967f38bd46019, type: 2}
+    hasAtmosphere: 1
+    atmosphereMat: {fileID: 2100000, guid: c1372e72796f1db47b4bd457c4c9f6e9, type: 2}
   generatedPlanets: []
 --- !u!4 &1527993900
 Transform:
