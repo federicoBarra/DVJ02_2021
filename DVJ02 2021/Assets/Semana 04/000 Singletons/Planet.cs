@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-namespace DVJ02.Semana03
+namespace DVJ02.Semana04
 {
     public class Planet : MonoBehaviour
     {
 
         public GameObject rotateAround;
-        public float radius = 10;
+        [SerializeField]
+        float radius = 10;
         public float traslationSpeed = 10;
         public float angle;
 
@@ -38,7 +39,26 @@ namespace DVJ02.Semana03
 
         void OnMouseDown()
         {
-            UniverseCreator.Get().PlanetClicked(this);
+            Debug.Log("Mouse down en " + name);
+            //GameManager gm = FindObjectOfType<GameManager>();
+            //gm.AddScore(20);
+            //
+            ////GameManager.Instance.AddScore(20);
+            //
+            //GameManager gm02 = GameManager.Get();
+            //
+            //gm02 = null;
+            //
+            //UniverseCreator.Get().PlanetClicked(this);
         }
+
+        //IHittable
+        //Orco : Enemy
+        //colisiona con enemy
+        //Orco e
+        //e.receiveDamage(10)
+        //Fantasma e
+        //e.receiveDamage(10)
     }
+
 }

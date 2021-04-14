@@ -1,0 +1,60 @@
+Devoluciones TP02:
+
+-nombrado de cosas, Instancing??? -> SolarSystemCreator, AsteriodsManager, CreatingPlanets ESTO NO -> PlanetsCreator ESTO SI
+-Nombre de alumno en el proyecto.
+	El Proyecto se debería llamar
+	TPX - Nombre Alumno
+	repo: TSDV_desarrollo02_tp04_Starmap
+	
+-Generalizacion de Codigo
+-Magic Numbers.
+-cacheo de referencias
+
+Coccia, Lautaro
+
+Brucart, Elias
+-Nombre de escena
+-Material de Trails
+
+Aquistape, Tomas
+
+Manzano, Guille
+-Orden en el proyecto.
+-PascalCase en nombre de clases.
+-Me tira error al darle play, faltó pushear algo? alguna cuestion de referencias en la escena?
+
+Olive, Tocayo
+
+
+
+
+public Gradient colorGrad;
+
+https://sourcemaking.com/design_patterns
+ttps://docs.unity3d.com/ScriptReference/Physics.Raycast.html
+https://docs.unity3d.com/ScriptReference/Ray.html
+https://docs.unity3d.com/ScriptReference/RaycastHit.html
+https://docs.unity3d.com/ScriptReference/Physics.Linecast.html
+https://docs.unity3d.com/ScriptReference/Camera.ScreenPointToRay.html
+https://docs.unity3d.com/ScriptReference/Quaternion.Angle.html
+https://docs.unity3d.com/ScriptReference/Quaternion.html
+https://docs.unity3d.com/ScriptReference/Quaternion.SetLookRotation.html
+https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html
+https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
+
+Raycast() will ignore a collider if the ray starts inside it.
+El Quaterion.Angle es independiente de los ejes y nunca va a dar mas de 180.
+
+
+GameManager que tenga score
+Cubos en pantalla que cuando los clickeo aumenta el score.
+
+// Hacer que cuando clickeo en una plano spawneen cubos
+// y cuando clickeo en los cubos estos se destruyan.
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DVJ02.Semana03
+namespace DVJ02.Semana04
 {
     public class UniverseCreator : MonoBehaviour
     {

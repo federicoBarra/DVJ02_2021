@@ -1,5 +1,6 @@
 ﻿using System;
 using DVJ02.Semana02;
+using Unity.Collections;
 using UnityEngine;
 
 namespace DVJ02.Semana01
@@ -22,11 +23,15 @@ namespace DVJ02.Semana01
             public Material atmosphereMat;
         }
 
+        [SerializeField]
+        PlanetData data;
+
         //void Awake()
         //{
         //    Debug.Log("Planet Awake");
         //}
 
+        [ReadOnly]
         public float speed = 5;
         public float radius = 2;
         public float angle = 0;

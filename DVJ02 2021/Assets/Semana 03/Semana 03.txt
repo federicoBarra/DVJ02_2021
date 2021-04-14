@@ -1,3 +1,6 @@
+Volvemos 10.35
+
+
 https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnMouseDown.html
 
 https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
@@ -6,3 +9,5 @@ https://www.geeksforgeeks.org/c-sharp-generics-introduction/
 Bitwise & Layers
 https://www.tutorialspoint.com/csharp/csharp_bitwise_operators.htm
 https://mathiassoeholm.github.io/Layer-Masks-In-Depth/
+
+https://blogs.unity3d.com/2016/04/20/particle-system-modules-faq/?_ga=2.42193317.1893428021.1617809284-1749827656.1569273124
