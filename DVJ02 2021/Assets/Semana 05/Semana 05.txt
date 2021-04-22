@@ -1,0 +1,54 @@
+Todos
+--------------------------------
+Interpretado del enunciado.
+el if en una linea es complicado de leer.
+Ver conceptualmente GameManager y sus métodos, R en el caso de Mica, GameOver en el caso de Mauro.
+Pensar en evento y no en checkeo constante. El código reacciona a lo que pasa y no es que chequea constantemente.
+Uso de prefijo UI para clases que manejen el canvas.
+Prohibido Copy/Paste
+Prohibido Copy/Paste
+
+Benitez, Micaela Luz
+--------------------------------
+PascalCase
+Que pasa al apretar "R"
+
+
+Gomez Cortez, Juan Sebastian	
+--------------------------------
+Porque los creditos al principio
+Menu al darle play al juego
+
+
+Mendoza, Mauro	
+--------------------------------
+Aplican conceptos de los demás
+chequeo constante de GameManager.Instance.GameOver. Apagar componente directamente.
+
+
+Ponce, Facundo Mateo	
+--------------------------------
+onMainMenu = true; onMainGameMode = false; onEndScene = false; onSecondGameMode = false;
+Cachuflito Logo
+
+
+EventSystem.current.IsPointerOverGameObject()
+
+
+UIMainMenu
+UIIngameMenu
+UIPlayerHUD
+
+Hacer una torreta con una base y una cañon. la base y el cañon rotarán a velocidades diferentes para apuntar a un transform.
+
+Vec3 posicionQueMeImporta = bola.position;
+posicionQueMeImporta.y = 0;
+
+
+links:
+https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnControllerColliderHit.html
+https://docs.unity3d.com/ScriptReference/Quaternion.Angle.html
+https://docs.unity3d.com/ScriptReference/Quaternion.html
+https://docs.unity3d.com/ScriptReference/Quaternion.SetLookRotation.html
+https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html
+
