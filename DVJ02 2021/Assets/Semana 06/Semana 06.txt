@@ -1,0 +1,43 @@
+Todes
+---------
+Nombrado de clases, metodos, variables, etc.
+NO mezclar ingles con español en el código.
+Coupling & Decoupling
+NO mezclar código de juego con código de UI.
+Uso de UI, concepto de lugares de cosas.
+Uso de early exit
+
+
+
+Aguirre Barrios, Julián
+-----------------------
+
+Scene 'END' couldn't be loaded because it has not been added to the build settings or the AssetBundle has not been loaded.
+
+En vez de Adds, Externals. Checkear al importar
+
+Componente animation, Guarda que estás usando el Legacy
+
+
+Gossa Hernan Agustin
+---------------------
+
+Referencias cruzadas UI
+Canvas fuera del player.
+
+Mostrar a todos el concepto del arma con otra camara.
+Enemy Spawner y Collectable Spawner son practicamente el mismo script
+
+
+Rodriguez Roge, Lucas
+---------------------
+Un script por boton?
+Box y Bomb scripts vacíos
+
+
+Aquistapace, Tomas
+---------------------
+Crosshair
+SpawnObjects
+
+

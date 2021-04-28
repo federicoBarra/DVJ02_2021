@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DVJ02.Semana06;
+using UnityEngine;
 
 namespace DVJ02.Semana05
 {
@@ -61,5 +62,11 @@ namespace DVJ02.Semana05
         {
             state = es;
         }
+
+        //void Die()
+        //{
+        //    Destroy(gameObject);
+        //    OnDie(this);
+        //}
     }
 }
