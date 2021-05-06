@@ -1,0 +1,58 @@
+VOLVEMOS 10.35
+
+Premature optimization is the root of all evil
+
+Limitación de solo poder importar recursos de arte, no código.
+
+Syntaxis
+	Variables public, privadas, parametros
+	camelCase
+	
+	Constantes, Enums, Métodos, Clases
+	PascalCase
+	
+	Interfaces empiezan siempre con i mayuscula ("I")
+	
+	Eventos (delegates, actions)
+	Siempre empiezan con On....
+
+	Todo lo que es UI prefijo UI al script
+	
+Producto Final
+	Conceptos visuales de hud y cosas.
+	Iconos en vez de texto, o como complemento.
+	Skybox?
+	
+Score en vez de Point.
+
+Errores en consola
+
+Juan Cruz
+-------------
+No usar underscores en nombres de clase.
+UIMainMenu
+Guarda con el abuso de las interfaces
+
+Federico Olive
+--------------
+Ver en clase
+
+Julián Bega
+-----------
+separar weapon en 2 scripts
+PlayerInfo.cs
+
+SetState(bool b)
+GameObject.Find("BallThrower").gameObject.GetComponent<Gun>().enabled = b;
+GameObject.Find("BallThrowerBigHandler").gameObject.GetComponent<MeshRenderer>().enabled = b;
+GameObject.Find("BallThrowerCannon").gameObject.GetComponent<MeshRenderer>().enabled = b;
+GameObject.Find("BallThrowerCharger").gameObject.GetComponent<MeshRenderer>().enabled = b;
+GameObject.Find("BallThrowerSmallHandler").gameObject.GetComponent<MeshRenderer>().enabled = b;
+
+GameObject.Find("BallThrower").gameObject.GetComponent<Gun>().enabled = true;
+GameObject.Find("BallThrowerBigHandler").gameObject.GetComponent<MeshRenderer>().enabled = true;
+GameObject.Find("BallThrowerCannon").gameObject.GetComponent<MeshRenderer>().enabled = true;
+GameObject.Find("BallThrowerCharger").gameObject.GetComponent<MeshRenderer>().enabled = true;
+GameObject.Find("BallThrowerSmallHandler").gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+https://www.tutorialsteacher.com/articles/difference-between-delegate-and-event-csharp
