@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using DVJ02.Semana05;
+using UnityEditor;
 using UnityEngine;
 
 namespace DVJ02.Semana05
@@ -8,11 +10,17 @@ namespace DVJ02.Semana05
     {
         public Transform target;
         public string nombreDeMetodo = "";
+
+        //Renderer[] rends = GetComponentsInChildren<Renderer>();
+
         void Start()
         {
+            Debug.Log("Start");
+
+            gameObject.SetActive(false);
+
             StartCoroutine("WaitAndPrint");//evitar usar
                                            //StartCoroutine(nombreDeMetodo);
-
             // o
             StartCoroutine(WaitAndPrint(10));
             //Coroutine c = StartCoroutine(WaitAndPrint(10));
@@ -97,5 +105,45 @@ namespace DVJ02.Semana05
                 //yield return new WaitForResourceLoad(nombreDelRecurso);
             }
         }
+
+        [Header("DEBUG")]
+        public Color debugSphereColor;
+        public float debugSphereSize;
+        void OnDrawGizmos()
+        {
+            // Draw a yellow sphere at the transform's position
+            Gizmos.color = debugSphereColor;
+            Gizmos.DrawSphere(transform.position, debugSphereSize);
+
+            //si mi nivel es de 5x5, no puede haber mas de 5 bombas-> bombCount = 5;
+            if (debugSphereSize > 4)
+                debugSphereSize = 4;
+
+            //Gizmos.draw
+        }
+    }
+}
+
+[CustomEditor(typeof(CoroutineExample))]
+public class LookAtPointEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        CoroutineExample targetCo = (CoroutineExample)target;
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Editor Loco", "Algo");
+        if (GUILayout.Button("Achicar esfera"))
+        {
+            targetCo.debugSphereSize -= 1;
+        }
+
+        if (GUILayout.Button("Agrandar esfera"))
+        {
+            targetCo.debugSphereSize += 1;
+        }
+        EditorGUILayout.EndHorizontal();
+
+        DrawDefaultInspector();
     }
 }

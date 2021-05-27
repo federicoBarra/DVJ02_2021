@@ -27,16 +27,16 @@ namespace DVJ02.Semana04
 
 	        if (instance != null)
 	        {
-	            Debug.Log("Ya existe una instancia de GameManager, que es " + instance.name);
-	            Debug.Log("Como ya existe una, destrui esta: " + name);
+	            //Debug.Log("Ya existe una instancia de GameManager, que es " + instance.name);
+	            //Debug.Log("Como ya existe una, destrui esta: " + name);
                 Destroy(gameObject);
 		        //return;
 	        }
 	        else
 	        {
-                Debug.Log("Esta es la primera instancia de GameManager: " + name);
+                //Debug.Log("Esta es la primera instancia de GameManager: " + name);
 			    instance = this;
-                Debug.Log("La guardo");
+                //Debug.Log("La guardo");
                 DontDestroyOnLoad(gameObject);
 	        }
         }

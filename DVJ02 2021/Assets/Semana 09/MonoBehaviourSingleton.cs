@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace DVJ02.Semana07
+namespace DVJ02.Semana09
 {
 	public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component
 	{

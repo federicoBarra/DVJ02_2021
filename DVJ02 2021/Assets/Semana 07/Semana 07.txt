@@ -1,5 +1,3 @@
-VOLVEMOS 10.35
-
 Premature optimization is the root of all evil
 
 Limitación de solo poder importar recursos de arte, no código.

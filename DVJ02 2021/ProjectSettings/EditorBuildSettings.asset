@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Semana 03/02 Scene Management/SceneManagementExample 02.unity
     guid: 48e187323c3cdbb488bbc3627da1d969
+  - enabled: 1
+    path: Assets/Semana 10/02 Loader Example/Loader 01.unity
+    guid: cd522b01efe0e774e891600ea667abbc
+  - enabled: 1
+    path: Assets/Semana 10/02 Loader Example/Loader 02.unity
+    guid: 9c902974bcf6c2b4d8c878e53acde5d1
   m_configObjects: {}

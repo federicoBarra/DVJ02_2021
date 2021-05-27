@@ -18,10 +18,27 @@ public class Camera2 : MonoBehaviour
 	public Vector3 offset;
 	public float camVelocity = 1;
 
-	//private Vector3 lastCamPos;
+    //public int bombCount = 10; // 5x5
 
+    void Start()
+    {
+        //buscar al player
+        //look at player
+        //if ()
+        //{
+        //    Debug.LogWarning("Che GD, hace bien la cosas");
+        //    bombCount = 5;
+        //}
+    }
+
+	//private Vector3 lastCamPos;
+    //TRansform target;
 	void LateUpdate()
 	{
+        //if (target == null)
+        //busca el chaibon
+
+
 		if (planetas.Count <= 0)
 			return;
 

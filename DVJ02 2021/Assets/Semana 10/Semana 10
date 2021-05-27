@@ -1,0 +1,141 @@
+PROHIBIDO COPY PASTE
+
+List<Vector3> direcciones = 
+direcciones[0] = Vector3.right
+---
+
+if (!canMoveRight && canMoveLeft && !canMoveForward && canMoveLeft)
+	okToMove = true;
+
+
+for
+{
+	ray source puntito + directiones[i]
+	{
+	as da
+	asd
+	asdas
+	dasdas
+	}
+}
+
+
+MovableEntity
+{
+	Chequeo de movimiento
+
+}
+
+
+Player : MovableEntity
+
+Enemy : MovableEntity
+
+Arreglar cuando explota la bomba
+
+https://www.youtube.com/watch?v=p8MzsDBI5EI
+
+MainMenu
+Play Scene
+Result Scene
+Arcanoid:
+
+Tareas
+01-Borde de nivel
+
+	10 minutos.
+	
+02-Generar ladrillos.
+	Instanciar gameobjects en una posicion particular
+		for x = 0 a width
+			for y = 0 a height
+				Instanciar( prefab , [x y]);
+				
+	30 minutos.
+	
+03-PlayerMovement
+	Lives
+		Si toca abajo reduce vida. Collider/Trigger? 
+	Muerte
+	
+		if (ball.y<0) 
+			Die();
+			
+		void Die()
+		{
+			ball.isMoving = false;
+			lives--;
+		}
+	1 hora
+	
+04-Ball
+	Colisiones paredes, normal
+	Colisiones Brick, normal
+	Colisiones player, calculo de normal * Range(-1.0f,1.0f). A este resultado normalizarlo.
+	
+	Respawn
+	Alive? isMoving? 
+	Movement
+	
+	Aumentar velocidad con cada hit.
+	
+	
+	Problematica -> Material fisicos.
+	OnHittedFloorCollider
+
+	3hs
+	
+	Comenatarios:
+	Tiempo que llevó: 10 minutos.
+	NO hubo otros problemas.
+	//No entendi como funcionan las normales
+	
+	
+05-Flow del juego. GameManager
+	Score
+	Ganar/Perder
+	Highscore (PlayerPref)
+	
+	45 min
+	
+06-MainMenu 
+	Play y Quit
+	Armar estructura de GameObjects de UI
+	Lindo
+	
+	35 min.
+
+07-PantallaFinal
+	Mostrar Score y Highscore.
+	Lindo
+	
+	35 min.
+	
+08-IngameHUD
+	Armar estructura de GameObjects de UI
+	Lindo
+	
+	45 min.
+
+Total = 8 hs
+
+12 hs
+
+Hacer tarea POR SEPARADO y anotar cuanto tiempo lleva.
+Ver que no se está contemplando y tiene un impacto en tiempo.
+
+
+
+
+VOLVEMOS 11.44hs
+
+
+
+
+
+
+
+
+
+
+

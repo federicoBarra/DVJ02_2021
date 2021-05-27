@@ -41,5 +41,19 @@ namespace DVJ02.Semana03
             return mask == (mask | (1 << layer));
         }
 
+        //11111111111111
+
+        //layer = 8
+        //
+
+        //00000010000000 (1 << layer)
+        //|
+        //00000000000001 mask
+        //=
+        //00000010000001  -> chequear este resultado con mask
+
+
+
+
     }
 }
