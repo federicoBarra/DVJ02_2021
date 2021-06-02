@@ -1,0 +1,321 @@
+Devoluciones Parcial
+Errores o detalles generales repetidos en diferentes parciales
+
+Concepto modularidad, GameManager, Player, Enemies, UI. VER el FPSController de Unity
+
+Si estan haciendo GameManager.Get() en TODAS partes en el script, cachear
+
+GameManager gm = GameManager.Get();
+gm.lives
+gm.enemycount
+gm.tito
+
+Player p = GetComponent<Player>();
+vector3 v3 = GetComponent<Player>().traform.position;
+GetComponent<Player>().traform.position.x, GetComponent<Player>().traform.position.y, GetComponent<Player>().traform.position.z
+v3.x, v3.y, v3.z
+
+EARLY EXIT
+if (!playerAlive)
+	return;
+
+Resolucion de pantalla con UI
+uso de variables static PROHIBIDO
+
+Importancia de trabajar para el otro (game designer, programmer).
+
+Decoupling obligatorio en proximos instancias de evaluacion.
+
+Facilidad de testeo
+Bomba con Click
+
+Uso de List
+
+Que pasa si el juego tiene mas de 1 nivel
+Player, game Agnostic.
+
+No abusar de las corutinas.
+
+Cacheo de referencias
+
+Concepto de callback al explotar la bomba.
+
+Abuso de getcomponent. cachear!
+
+uso de namespaces
+
+Cheat system
+
+la irrelevancia de usar short en vez de int.
+
+Usar Actions en vez de definir el delegate.
+
+prefijo UI
+
+Que el GameManager sen un singleton no significa que lo accedan de todos lados en el juego.
+
+Enemy comparte movimiento con el Player, deberían heredar de algo en comun o tener un componente de movimiento.
+
+un delegate, action o similar no debería poder ser invokado desde otra clase. decoupling!
+
+que pasa si agrego un tipo de enemigo mas en el juego?
+
+Orden del proyecto. No tiene sentido separar en carpetas que tienen un solo script adentro.
+
+able va sin "h"
+doblar en ingles es "turn"
+
+Están abusando de las corutinas. Una corutina en un update es severo.
+
+Tourret Juan Cruz
+-----------------
+BombExplode.cs
+Explosion() -> Como generalizarías eso? ese copy paste
+Box.cs
+Porque conoce a SpawnBoxes?
+Para que tienen health las cajas?
+La puerta puede no aparecer nunca si lo definis en base a un random.
+La caja no debería saber que existe una puerta. Para esto usarías un GameManager
+
+Enemy.cs
+Infinito copy paste. :(
+
+FollowPlayer.cs -> CameraController.cs?
+
+PlayButton.cs -> MainMenu.cs?
+
+VictoryState.cs
+depende del SpawnBoxes?
+
+SpawnBoxes.cs
+Es un god object este, hace de todo. Todos acceden a este. Este accede a todos. NO!
+
+PlayerLayBomb.cs
+Si la bomba es trigger cuando la estas poniendo la pueden atravesar los enemies...
+
+
+Sgro Adrián
+-----------
+Version de Unity
+LevelManager.cs
+MapPosition tiene un nombre un poco confuso,
+MapPosition.GetEmptyRandomMapPosition -> lo podríamos leer como "a la posicion del mapa pedile una posicion vacía del mapa"
+Por otro lado, podría no ser static y está todo bien igual, de hecho te beneficia que no sea static, lo podrías ver en el inspector.
+
+Inversamente en varias partes del código los Action si podrían ser static y tea ahorrarías muchas referencias
+
+Por como funciona Unity quizás te simplificaría un poco el código de gameplay hacer que la UI reaccione a este (mediante eventos) y no viceversa.
+
+Direction.cs
+De esto podemos hablar un poco.
+
+
+Lucas Rodriguez Roge
+--------------------
+No centra player ni bombas.
+
+Play.cs ??? Playagain.cs ???
+
+GameManager.cs
+public static bool GameOver()
+    {
+        if (gameover)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+???
+
+Enemy.cs
+Uso de interfaz IHittable
+SceneManager.LoadScene????
+StartCoroutine todos los frames
+
+Bomb
+copy paste
+este script conoce todos los scripts
+
+Box
+if (!GameManager.gameover) ???
+
+
+
+Rodriguez Giles, Juan
+---------------------
+GameManager.cs
+que hace IDamageable aca?
+
+LevelGenerator.cs
+copy paste, Magic Numbers
+const no modificables desde el editor.
+
+PlayerMovement.cs
+raywhat?
+
+Enemies
+herencia?
+movimiento igual al player.
+
+
+Ponce, Facundo
+--------------
+Mucho coupling. Medio que todas las clases se conocen entre ellas.
+Cuidado con el sobreuso de métodos. Sobretodo en el concepto de niveles de profundidad.
+Estas abusando del uso de "ref"
+
+UI_EndScene.cs
+infoUpdate GUAT?!
+
+No usar el prefijo ref, ya es una referencia eso.
+
+Door.cs
+Porque la puerta conoce el Game Manager?
+
+CameraFollow.cs
+Está bastante raro el uso de esas corutinas
+Tampoco debería conocer al player, con un target transform debería alcanzar.
+
+BreakableWall.cs
+Que tu cantidad de power ups en el nivel dependa de un random complica el diseño del juego.
+
+Enemy.cs
+transform.position = Vector3.MoveTowards(transform.position, newPosition, enemySpeed * Time.deltaTime);
+Cuidado con eso porque si el dt es muy grande es posible que PosReached() no devuelva nunca true.
+https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html
+
+Bomb.cs
+Como podría borrar los bool que me complican la clase? 
+new Quaternion(0, 5, 1, 1) GUAT?!
+
+PlayerMovement.cs
+Porque esta clase conoce a CreateMap?
+
+CreateMap.cs
+if (((posWallUnbreakable.x + scaleTileXWalls) != (scaleFloorX * 0.5f) && (posWallUnbreakable.z + scaleTileZWalls) != (scaleFloorY * 0.5f)) &&
+                    (posWallUnbreakable.x + scaleTileXWalls) != maxWidth && (posWallUnbreakable.z + scaleTileZWalls) != maxHeight)
+                    posWallBreakable = new Vector3(posWallUnbreakable.x + scaleTileXWalls, 0.5f, posWallUnbreakable.z + scaleTileZWalls);
+					
+GUAT!???
+
+Mendoza Mauro
+-------------
+(Quizás) Algunas properties estaría bueno poder visibilizarlas desde el inpector, por lo cual no deberían ser properties.
+
+Bomb.cs
+uso de interfaz IHittable
+
+
+Manzano Guillermina
+-------------------
+El movimiento del player está medio raro.
+Guarda con el nombre fdComponent y eso.
+
+SceneChanger.cs ???
+
+PowerUpsManager.cs
+Porque no sería un gameobject esto?
+
+EnemiesManager.cs
+Quizás las funcionalidades de los enemigos las definan los enemigos y no el manager
+
+GameplayManager.cs
+GameObject.FindWithTag("EnemiesManager").GetComponent<EnemiesManager>();
+Si hay unos solo para que taggearlo?
+
+GameplayData.cs
+para que tiene un instance? lo instacia la UI???
+
+EnemyMovement
+Muyy similar al player, no?
+
+
+Insausti Alejandro
+------------------
+El player se salió del nivel pal costado.
+No se puede ganar.
+a veces la explosión se pasa a la bomba nueva que puse
+Los enemigos se escaparon del nivel
+
+en lineas generales el código está bien pero el juego no funciona bien.
+Estas abusando de los region en el codigo.
+
+
+Gomez Juan Sebastian
+--------------------
+prefijo UI pa las cosas de UI
+GameManager.Get() por todos lados
+Mezcla de eventos en diferentes clases.
+
+Explosion.cs
+Uso de interfaces IHittable
+
+HudManager.cs
+lifeOne, lifetwo, lifethree, List<>? que pasa si quiero 10 vidas
+
+
+Coccia Lautaro
+--------------
+Tuve que traerme los essencials de textmeshPro
+se traba el player
+no aparece bien la bomba, explota mal, a veces me mata ni bien la activo. a veces no rompe las paredes.
+no tengo ningun feedback de explosiones.
+
+BombController.cs
+no está funcionando bien.
+
+Todos acceden al LevelManager
+
+LevelManager maneja UI
+
+
+Brucart, Elias
+--------------
+no tengo ningun feedback de explosiones.
+debug.Log constante en el update.
+Uso de Interfaces
+copy paste por aca y alla
+
+Door.cs
+SceneManager aca polemico
+
+
+Benitez Micaela
+---------------
+GameManager.Get() es accedido de varias partes del código.
+interface hittable
+
+
+Bega Julian
+-----------
+GameManager mega sobrecargado
+
+
+Aquistapace Tomas
+-----------------
+Movimiento del player raro. Tarda un toque en poner la bomba
+la UI es un singleton?
+player accede directamente a l ui?
+playerPlantBomb no funcaba bien -> un renombre que salió mal
+
+MobsBehaviour -> MobBehaviour, sin "s"
+copy paste
+
+
+Aguire Julian
+-------------
+Las explosiones se escapan de la pantalla, a veces 
+LevelManager referenciado por varios scripts.
+
+PutBomb.cs GUAT?
+https://www.tutorialspoint.com/Bubble-Sort-program-in-Chash
+ButtonManager GUAT?
+ClockSet
+https://docs.microsoft.com/en-us/dotnet/api/system.timespan.fromseconds?redirectedfrom=MSDN&view=net-5.0#System_TimeSpan_FromSeconds_System_Double_
+
+SpawnManager.cs
+allList.Any() lamda?
+

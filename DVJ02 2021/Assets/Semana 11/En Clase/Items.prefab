@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3761888105899563219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8374346290942209220}
+  - component: {fileID: 780688711997079094}
+  m_Layer: 0
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8374346290942209220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761888105899563219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 359.0855, y: 174.85532, z: -9.009125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780688711997079094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761888105899563219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168e715f3d8612941a39f54c0372aaa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - name: Espada Batman
+    damage: 10
+    lvlRequired: 2
+    image: {fileID: 0}
+  - name: Espada Superman
+    damage: 15
+    lvlRequired: 3
+    image: {fileID: 0}
+  itemSos:
+  - {fileID: 11400000, guid: 4ab4d834958d57b4fb5abe8ff67e5cfa, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
+  - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}
