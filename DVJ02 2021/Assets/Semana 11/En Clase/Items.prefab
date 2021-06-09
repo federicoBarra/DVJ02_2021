@@ -47,11 +47,11 @@ MonoBehaviour:
   - name: Espada Batman
     damage: 10
     lvlRequired: 2
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 60ab7a687dafd2949b3d7dbeba06e97a, type: 3}
   - name: Espada Superman
     damage: 15
     lvlRequired: 3
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 69c36795ad2a9c44896fc37108a33197, type: 3}
   itemSos:
   - {fileID: 11400000, guid: 4ab4d834958d57b4fb5abe8ff67e5cfa, type: 2}
   - {fileID: 11400000, guid: 84b66f530f85c9b4e95d60b65d994b1d, type: 2}

@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace DVJ02.Semana10
 {
-	public class UISpecialButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+	public class UISpecialButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler
 	{
 		public GameObject tooltip;
 		public bool isOver;
@@ -38,5 +38,10 @@ namespace DVJ02.Semana10
 			isOver = false;
 			tooltip.SetActive(false);
 		}
+
+	    public void OnBeginDrag(PointerEventData eventData)
+	    {
+	        //throw new System.NotImplementedException();
+	    }
 	}
 }

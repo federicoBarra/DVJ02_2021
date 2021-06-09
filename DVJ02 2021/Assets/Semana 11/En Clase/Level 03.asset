@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47beaa4aefb70914491b62e8c6488ea7, type: 3}
-  m_Name: Level 02
+  m_Name: Level 03
   m_EditorClassIdentifier: 
   levelName: The pits
   width: 15

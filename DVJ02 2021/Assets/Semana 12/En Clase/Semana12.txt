@@ -1,0 +1,53 @@
+VOLVEMOS 11.20
+
+Sgro Adrian, Olive Federico, Mendoza Mauro.
+
+Aquistapace Tomas, Juan Cruz Tourret, Lautaro Coccia
+Ponce Facundo, Elías Brucart, Gossa Hernán
+	bug de guardado y cargado
+
+Julian Aguirre, Guillermina Manzano y Lucas Rodriguez Roge
+
+sebastian gomez y micaela benitez, Juan Rodriguez Giles
+
+Julian Bega, Gonzalo Montero y Alejandro Insausti
+	
+
+
+
+
+Temitas
+EventTriggers
+RenderTexture
+Animator.
+
+GridLayout
+
+Boton derecho.
+
+
+
+Tipito corriendo. WASD
+Enemigo -> matamos, dropea item
+Item en el piso. pickupeable -> lo agrega el inventory.
+
+Physics.OverlapSphere() enfrente del character y se fija si le pegó a IHittable
+
+public interface
+{
+	void ReceiveDamage(float damage)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
