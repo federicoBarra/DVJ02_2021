@@ -30,6 +30,7 @@ Boton derecho.
 Tipito corriendo. WASD
 Enemigo -> matamos, dropea item
 Item en el piso. pickupeable -> lo agrega el inventory.
+Poder droppear items del inventory al piso.
 
 Physics.OverlapSphere() enfrente del character y se fija si le pegó a IHittable
 

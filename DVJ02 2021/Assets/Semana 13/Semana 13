@@ -1,0 +1,85 @@
+VOLVEMOS 10.50hs
+
+
+1. Sgro Adrian, Juan Cruz Tourret, Julian Bega, Lucas Rodriguez Roge
+2. Mendoza Mauro, Aquistapace Tomas, Gossa Hernán, Guillermina Manzano
+3. Juan Rodriguez Giles, Elías Brucart, Julian Aguirre, sebastian gomez
+4. Olive Federico, Lautaro Coccia, Gonzalo Montero
+5. Micaela Benitez, Ponce Facundo, Alejandro Insausti
+
+
+UIBatmanicItem -> prefab
+	public Image icon;
+	public TMP_Text texto;
+	public TMP_Text cantidad;
+	
+	
+gameObject.getChild(0).getComponent<Image>().sprite
+itemloco.icon.sprite
+gameObject.getChild(1).getComponent<TMP_Text>()
+
+Inventory : Bag
+Equipment : Bag
+
+ref a algo (Item)  item = GAmeManager.Get().GetItem(ID)
+
+UISlot
+	public Item item;
+
+
+Player
+	MovementComponent
+	PuncherComponent
+	LifeComponent
+	
+Enemy
+	MovementComponent
+	LifeComponent
+
+
+MovementComponent
+Update
+{
+	rig.velocity = movement * moveSpeed;
+	animator.SetFloat("Speed", movement.magnitude);
+	//handle sprite flip
+	if (movement.x > 0)
+		transform.localScale = faceingRight;
+	if (movement.x < 0)
+		transform.localScale = faceingLeft;
+}
+PuncherComponent
+{
+	t = punchTime;
+	animator.SetTrigger("Punch");
+	
+	Collider2D[] colliders = Physics2D.OverlapCircleAll(puchTrigger.position, collitionRadius);
+	if (colliders.Length > 0)
+	{
+	for (int i = 0; i < colliders.Length; i++)
+	{
+		Collider2D col = colliders[i];
+		if (col.tag == "Damageable")
+		{
+			EntityBase eb = col.GetComponentInParent<EntityBase>(); // XXX QUE HAY DE MALO CON ESTE APPROACH?
+			if (eb)
+				eb.TakeDamage();
+		}
+	}
+	}
+}
+
+DamageReceiverComponent
+{
+	animator.SetTrigger("Hitted");
+}
+LifeComponent
+{
+	life que se resta y si se muere
+	animator.SetTrigger("Die");
+
+}
+
+
+
+https://docs.unity3d.com/Manual/class-Tilemap.html
