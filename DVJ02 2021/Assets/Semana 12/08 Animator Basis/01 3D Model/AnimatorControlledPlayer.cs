@@ -6,11 +6,14 @@ namespace DVJ02.Semana12
 {
 	public class AnimatorControlledPlayer : MonoBehaviour
 	{
+	    public AnimatorOverrideController overr;
+
 	    private Animator animator;
 	    // Use this for initialization
 	    private void Start()
 	    {
 	        animator = GetComponent<Animator>();
+	        //animator.runtimeAnimatorController = overr;
 	    }
 
 	    // Update is called once per frame

@@ -1,0 +1,123 @@
+General
+-------
+cuestion de darle tiempo al hit time.
+anim.SetFloat("MoveSpeed", 0);  
+anim.SetFloat("MoveSpeed", 1);
+setear eso en base a la velocidad del personaje
+
+escenas de testeo en su carpeta particular de testeo
+trigger constante (o sphere cast) en vez de prender y apagar al apretar la E
+Uso de MonoBehaviourSingleton
+
+UI por fuera del gameplay del juego.
+importancia del nombrado de escenas.
+
+Sgro Adrian, Juan Cruz Tourret, Julian Bega, Lucas Rodriguez Roge
+----------------------------------------------------------------------
+moviemiento raro, navmesh tiene su complejidad.
+
+el pickup podría ser un collider normal tambien
+imaginen el hecho de que aparezca un texto, "press E to pickup"
+Slot IPickable.PickUp()
+{
+return new Slot(ID, Amount);
+}
+un new para retornar valores nomás y despues descartar el Slot?
+
+PlayerStats podría ser solo data y no un GO
+Mucha similitud entre player y enemy.
+
+
+Mendoza Mauro, Aquistapace Tomas, Gossa Hernán, Guillermina Manzano
+----------------------------------------------------------------------
+Guarda con el uso de 2 o mas colliders en un mismo objeto.
+La clase Player es un poco un mountruo que hace de todo.
+private void OnTriggerStay(Collider other)
+    {
+        if(Contains(itemMask, other.gameObject.layer))
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+		
+Player.cs :: HIt
+		Guarda con esto
+		hitColider.transform.GetComponent<Enemy>().onDie(hitColider.transform.GetComponent<Enemy>());
+
+MeteorsColition -> Como se debería llamar esta clase? Meteor
+
+
+Juan Rodriguez Giles, Elías Brucart, Julian Aguirre, sebastian gomez
+----------------------------------------------------------------------
+es un poco un caos el código.
+
+PlayerAttack : CharacterStats ??? guarda con la herencia de cosas que no tienen nada que ver
+
+//PlayerAttack pa;
+//CharacterStats cs = (CharacterStats) pa;
+
+bool isGrounded;
+bool canAttack;
+
+if (Input.GetMouseButtonDown(0) &&
+!animator.GetCurrentAnimatorStateInfo(0).IsName("WK_heavy_infantry_07_attack_A") &&
+!animator.GetCurrentAnimatorStateInfo(0).IsName("WK_heavy_infantry_03_run"))
+Esto no, nosotros tenemos el control del player y sabemos cuando está haciendo esas acciones, no le deberíamos preguntar al animator que está haciendo mi personaje.
+
+CharacterStats
+manejo de la UI desde aca
+
+enemy
+animator.Play("WK_heavy_infantry_07_attack_A"); no definir animaciones de este modo sino a través de parametros.
+
+Como cierro el inventory?
+
+
+Micaela Benitez, Ponce Facundo, Alejandro Insausti
+----------------------------------------------------------------------
+Player.cs
+if (GameManager.Get() != null)
+GameManager.Get().InitializeResultScreen();
+RangedAttack.damageArrow += PassDamageToArrow;
+está raro el RangedAttack ese, porque no pasarle el daño al arrow y ya?
+???
+raro el concepto de la collision que decide el player que le pego el enemy y viceversa.
+IHittable
+
+raro el concepto de los objetos melee range
+
+Meteorito
+que use Ihittable y ya no? en vez de tener un Action y que despues el Enemy lo tenga que conocer
+
+PauseScreenState
+controla la UI?
+Quizás es más correcto manejar el timeScale desde el GameManager. SetPause(bool paused)
+
+
+Olive Federico, Lautaro Coccia, Gonzalo Montero
+----------------------------------------------------------------------
+Playercontroller
+accede a LevelManager?
+InstanciateMeteorites -> como se podría llamar mejor esto? 
+
+el hit de mi player hacia el enemy o no hace nada o no tengo ningun feedback
+dificil de probar recolectar items
+
+
+
+QUE SE VA A EVALUAR?
+Limpieza de codigo, simpleza.
+Decoupling
+Features
+Analisis correcto del enunciado.
+Pulido
+Separacion de la data de lo que lo controla.
+Aplicacion de patrones, no abuso.
+Uso de GameManager, si es necesario.
+Orden del proyecto (estructura, nombre de carpetas, nombre de clases)
+Creditos
+Copy/Paste forbidden
+Interfaces
+
+
+
+
+
