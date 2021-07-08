@@ -1,0 +1,643 @@
+
+
+unscaledDeltaTime = 0.01
+
+
+
+public class Arbitro
+{
+	start
+	{
+		observar cuando le tocan la pata a messi
+	}
+
+
+	leTocaronLaPataAMessi()
+	{
+		si veo que es falta
+			cobrar penal()
+	
+	}
+
+	CobrarPenal()
+	{
+	
+	}
+
+}
+
+
+
+public class Messi
+{
+	OnCollitionEnter()
+	{
+		//OnMetocaronLaPata()
+		Arbitro.cobrarpenal()
+	}
+}
+
+
+GM
+{
+
+	EndGame()
+	{
+	
+	}
+}
+
+Nave
+{
+	OnCollitionEnter()
+	{
+		OnMeEstrole()
+		OnAterrizeBien()
+		GameManager.AddScore() //ESTO NOOOOOO
+	}
+}
+
+decoupling
+
+LevelSideCollider : MB
+{
+	action OnPlayerCollided;
+	OnCollitionEnter()
+	{
+		player.Explotion();
+	}
+}
+
+
+Divide & Conquer.
+Player
+	WEapon
+	Shotgun : WEapon
+	Bazzoka : Weapon
+
+IWeapon
+	shoot
+	reload
+
+***************************************************	
+Completar lista de BUILDS, tps que usan el anterior
+***************************************************
+90%
+
+
+Todos y todas
+-------------------------------------------------------------------------------------
+-Es raro que la nave defina el zoom. Quizas lo que debería definir es la distancia a la que se encuentra al piso, y que la cámara sea la que defina si zoomea o no
+	Lo mismo con la pausa. Es propia del juego y NO el player.
+	
+O sea, 
+Game::TogglePause()
+{
+	gamePaused = !gamePaused;
+	if (player)
+		player.enabled = !gamePaused;
+		player.SetCanMove(bool);
+}
+
+-El uso de "_" en la definición de clases no respeta las convenciones de sintaxis de c#.
+- Scripts que se encargan de UI sin su prefijo UI. UI_MainMenu -> UIMainMenu
+
+-Usar Actions en vez de delegates cuando sea pertinente (rara vez uno define delegates)
+
+int delegate PlayerDiedEvent()
+PlayerDiedEvent OnPlayerDied
+
+Action OnPlayerDied()
+
+-Los Actions solo deben ser invocados de la clase a la que pertenecen. 
+(ej. El player no puede llama UIZarlanga.OnFire?.Invoke())
+
+player
+	public static Action OnDied;
+
+start
+	OnDied += died;
+		
+	died()
+	{
+		hace algo
+	}
+		
+Enemy 
+	Player.OnDied;
+	ESTO NO
+
+-Es el player el que decide cuando se chocó y no el piso. (excepto condiciones especiales)
+
+-Debug.Logs constantes
+
+-Diferencia conceptual entre Manager y Controller
+
+-Diferenciación entre lo que es data y lo que es static config o settings
+
+PlayerData
+{
+	int goldAmount;
+}
+
+PlayerInitialValues o PlayerConfig : SO
+{
+	int oroConElQueEmpiezaElJuego;
+}
+Warrior 
+	100 oro
+
+Mago 
+	0 oro
+
+-Uso de namespaces
+
+namespace LunarLander.CombatSystem.Items
+namespace LunarLander.CombatSystem.Skills
+
+namespace LunarLander.UI
+
+namespace LunarLander
+
+-rig.AddForce en el Update en vez del FixedUpdate. Por eso funciona diferente en el Build.
+	
+
+	Update
+	
+	fuel--;
+	
+	if (getKeydown)
+	{
+		rig.AddForce(5); //BIEN
+	}
+
+		rig.velocity = 5 *Time.deltaTime; //BIEN
+		rig.AddForce(5* Time.deltaTime); //MAL
+	
+	FixedUpdate 0.02
+		if (getKey)
+		{
+		 
+		}
+			
+		rig.AddForce += 5; //BIEN
+
+
+	Update 1 5
+	Update 2 5
+	Update 3 5
+	Update 4 5
+	Update 5 5
+FixedUpdate 5
+	Update
+	Update
+	Update
+	Update
+	
+	Update 1 5
+	Update 2 5
+FixedUpdate 5
+	Update
+	Update	
+	
+
+-atención al uso de delta time tambien. la rotación también debería usarlo
+
+-Que pasa si tenes 5 splashes?
+-la velocidad a la que baja el fuel no puede ser dependiente del framerate. (uso del deltaTime)
+
+-nave que colisiona solo alguna pata es tomado como landed.
+
+-The referenced script (Unknown) on this Behaviour is missing!
+	Atención a los warnings.
+
+-La idea con los splashes era que los codeen a mano	y no usando la funcionalidad provista por unity.
+-La joda del terreno procedural era que lo codeen ustedes no que usen algo de la web
+
+-Mathf.PerlinNoise en el terrain generator :-)
+
+-Para la próxima materia tienen un límite de 128 caracteres por línea (150 en casos mega extremos).
+
+if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, mountain) || Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, platform))
+
+
+Vector2 cosa = new Vector2(transform.position.x, transform.position.y)
+
+if (Physics2D.Raycast(cosa, Vector2.down, rayDistance, mountain) || 
+	Physics2D.Raycast(cosa, Vector2.down, rayDistance, platform))
+
+bool ChocoConPared = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, mountain);
+bool ChocoConBarrilExplosivo = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, platform);
+
+if (ChocoConPared || ChocoConBarrilExplosivo)
+{
+}
+#region Helpers
+#endregion Helpers
+
+#region Variables
+#region Metodos
+
+Player
+#region Combat
+
+#region Damage
+MonoBehaviuorSingleton
+
+
+
+Aguirre
+-------------------------------------------------------------------------------------
+
+Está muy bien el producto final. 
+Hay un par de temas de convencion de syntaxis.
+
+superposición de textos, 
+la nave explota cuando paso de nivel, convive la nave explotada con la actual.
+Choqué contra el piso y no perdí.
+En modo zoomeado me puedo ir de la pantalla.
+Puedo "aterrizar en cualquier lado"
+Botón de exit con texto "Button" 
+
+Botón de Again no funciona.
+
+Errores:
+MissingReferenceException: The object of type 'Image' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.EventSystems.UIBehaviour.IsActive () (at C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs:28)
+UnityEngine.UI.Graphic.SetVerticesDirty () (at C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs:249)
+UnityEngine.UI.Graphic.set_color (UnityEngine.Color value) (at C:/Program Files/Unity/Hub/Editor/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs:152)
+UI_Generics+<CoroutineFadeImage>d__0.MoveNext () (at Assets/UI Scripts/Generics/UI_Generics.cs:16)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+
+The referenced script (Unknown) on this Behaviour is missing!
+The referenced script on this Behaviour (Game Object 'PixelCamera') is missing!
+The referenced script on this Behaviour (Game Object 'PixelCameraFullscreen') is missing!
+
+Hay un pasamanos de referencias de ui entre UIMainMenu, LoaderManager y UIGenerics
+Generics es otra cosa, en todo caso ahi sería un UIUtils, UIHelpers, etc.
+UI_GameStats, porque las stats las especificás que son de UI?
+
+GameManager.cs
+Que sentido tiene hacer esa referencia al Action? estás basicamente llamando directamente al metodo GetScore (que debería llamarse SetScore también).
+Luego accedés a ScoreInMach publicamente.
+
+Paralax.cs
+Uso de listas.
+
+GameplayManager.cs
+OnScoreChanged no se usa no?
+
+ShipManager.cs
+public Action OnDestroy; pisa el método OnDestroy de MonoBehaviour.
+Mathf.RoundToInt((Mathf.Abs(lastVelocity.x) + Mathf.Abs(lastVelocity.y))) ----> velocity.Magnitud
+
+
+ShipData.cs
+Abuso de las properties. 
+	Ej.
+    private Rigidbody2D rigidbody2D;
+    public Rigidbody2D rb2d { get { return rigidbody2D; } set { rigidbody2D = value; } }
+???
+
+
+Aquistapace
+----------------------------------------------------------------------------------------
+En un momento se me cargaron 2 niveles a la vez.
+Rarísimo la zona de viento que te tira para adentro del nivel.
+
+Errores
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+LevelManager.CallFinalScreen () (at Assets/Scrips/Gameplay/LevelManager.cs:47)
+Player_Ship+<WaitAFewSeconds>d__32.MoveNext () (at Assets/Scrips/Player_Ship.cs:190)
+UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+
+UI_Manager
+porque no cacheas GetComponent<Player_Ship>() si lo usas por todos lados?
+RotateFuelArrow, estas llamando directamente del player a esto.
+
+PlayerShip.cs
+controla cosas de UI
+Define el flow del juego.
+	if (actualFuel <= 0)
+	{
+		actualState = States.finishMission;
+		StartCoroutine(WaitAFewSeconds("Finish"));
+	}
+	else
+	{
+		StartCoroutine(WaitAFewSeconds("Crash"));
+	}
+
+
+CameraZoom.cs ??? -- Camera.cs, CameraController.cs
+Zoom() ??? --- CheckZoom, ProcessZoom, UpdateZoom, etc.
+
+
+Bega
+----------------------------------------------------------------------------
+Me puedo ir del nivel. No pierdo ni gano.
+Me puedo seguir moviendo despues de chocar.
+Esq en el menu tira error:
+	NullReferenceException: Object reference not set to an instance of an object
+	GameManager.Pause () (at Assets/Scripts/Managers/GameManager.cs:79)
+	GameManager.Update () (at Assets/Scripts/Managers/GameManager.cs:45)
+	de hecho rompe el juego.
+
+PlayerManager y PlayerController???
+void LateStart() no existe
+Delegates, actions???
+
+PlayerManager.cs
+-EL nombre de la clase implica que va a manejar varios/diferentes players
+-if (collision.gameObject.tag == "X2")
+	listas?
+El nivel tambien se maneja desde aca
+
+UIManager.cs
+Estas usando el setActive todos los frames para varios objetos.
+
+GameManagerReference.cs
+Que es esto?
+
+SplashScreen.cs
+Que pasa si ahora tenes 5 splashes?
+
+Wait1SecondAndStartGame() Espera 2 segundos... DelayGameStart(float seconds) o algo asi
+
+
+Benitez
+----------------------------------------------------------------------------
+Esta raro como se mueve la nave. La fuerza debería solo aplicarse sobre el up de la nave.
+Funciona así al apretar W pero A y D aplican fuerza tambien para los costados cuando solo deberían rotar la nave.
+
+Spaceship.cs
+Porque el fuel está en el GameManager?
+Porque accede la nave al GameManager y al loader?
+Porque no calcular la altitud directamente con un raycast?
+El consumo de Fuel depende del framerate de tu juego
+	GameManager.Get().SetFuel(-0.1f);
+
+ILanding
+para?
+
+GameManager.cs
+El uso de properties te simplifica la cosa.
+
+
+Brucart
+----------------------------------------------------------------------------
+UI cortada en resolución más chica.
+Me escapo de la pantalla.
+No siento que zoomee bien.
+
+Errores:
+NullReferenceException: Object reference not set to an instance of an object
+Player.CalculateAltitude () (at Assets/Scripts/Gameplay/Player/Player.cs:93)
+Player.FixedUpdate () (at Assets/Scripts/Gameplay/Player/Player.cs:80)
+
+ver como simplificar los if largos
+ej. if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, mountain) || Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, rayDistance, platform))
+
+Player.cs
+    public static event Action PlayerLanded;
+    public static event Action PlayerLanded2;
+    public static event Action PlayerLanded4;
+    public static event Action PlayerLanded5;
+--->	
+	public static event Action<int> OnPlayerLanded
+	
+	
+	OnPlayerLanded(2)
+	
+	GM
+		start()
+		{
+			Player.OnPlayerLanded += PlayerAterrizo;
+		}
+	
+		PlayerAterrizo(int plataformaTanto)
+		{
+		
+		}
+	
+	
+if ((hit.collider.CompareTag("MountainMoon")) || (hit.collider.CompareTag("Platform")))
+???
+
+OnCollisionEnter2D --- copy/paste --- uso de listas
+
+LevelManager.cs
+level01
+level02
+level03
+
+Que pasa si tengo mas de 3 niveles.
+
+generalizar OnCollisionEnter2D, CalculateAltitude y similares en Player.cs, GameManager, etc
+
+public class Platform
+{
+	public int platformScoreMultiplier;
+}
+
+
+Coccia
+----------------------------------------------------------------------------
+La nave empieza con una rotacion rara al pasar de nivel
+
+Muchos scripts con métodos vacíos.
+
+HUDManager.cs
+Guarda con el copy/paste!
+private void OnDisable()
+{
+	CheckPlayerCollision.setNewScore += UpdateScore; <------ ese + debería ser un -
+}
+fuel que se resta constantemente en vez de cuando uso fuel.
+
+
+Gossa
+----------------------------------------------------------------------------
+Tuve que importar los TMP Essentials
+dice successful landing cuando aterrizo en piso todo curvado.
+UI cortada en resolución más chica.
+
+CameraController.cs
+ZoomIn() y ZoomOut() muy similares
+
+
+Manzano
+----------------------------------------------------------------------------
+Cuando gano me muestra que pierdo y despues me muestra que gané.
+Medio raro que se quede trabada ahi en los bordes la nave.
+Raro que la nave mantenga su tamaño cuando hago zoom
+El uso de eventos en un Update es polémico (player.onMoving += OnPlayerMoving;)
+Piola el parallax en el menu.
+
+
+Instausti
+----------------------------------------------------------------------------
+Zoom bastante cerca
+ShipData para qué es MonoBehaviour?
+
+ShipController.cs
+Rotacion de la nave sin delta time
+if (gameOver) { return; } ???
+
+
+Mendoza
+----------------------------------------------------------------------------
+Manejo de saves desde la UI.
+Como resolverías el hecho de que WindManager, TerrainGenerate, PlatformManager no conozcan al GameplayManager
+Como ves el concepto de llamar a los eventos desde PlayerData? cuales son los beneficios, cuales las contras?
+
+PlayerController.cs
+GameplayManager.Get().FinishLevel(win); ?
+
+} while (repeat); ñaca ñaca
+
+GameplayManager tampoco debería conocer al GameManager, no?
+
+
+Olive
+----------------------------------------------------------------------------
+Muy bueno lo del webrequest
+
+El jefe no pidió que el lander salga de una plataforma.
+
+UiMainMenu
+TextMeshProUGUI child in panels[i].GetComponentsInChildren<TextMeshProUGUI>(true)?
+	Definí referencias directas y ya. Complejiza el código el maneje de childs ahí.
+	
+CameraSettings sería más CameraController o similar.
+
+
+Ponce
+----------------------------------------------------------------------------
+Gameplay sólido.
+
+You are trying to create a MonoBehaviour using the 'new' keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent(). Alternatively, your script can inherit from ScriptableObject or no base class at all
+UnityEngine.MonoBehaviour:.ctor ()
+SaveScore:.ctor ()
+GameManager:LoadAndSaveScores () (at Assets/Scripts/Managers/GameManager.cs:60)
+GameManager:Start () (at Assets/Scripts/Managers/GameManager.cs:37)
+
+TimerGame.cs es UI no? MakeSplash tambien.
+
+Qué viene a ser GMReference?
+
+ShipController conoce GameManager, tambien LimitLevels (si me llevo el script de la nave a otro juego me tengo que llevar eso?). 
+
+public PauseGameEvent isGamePaused; -> OnGamePaused;
+
+
+Rodriguez Giles
+----------------------------------------------------------------------------
+Pierdo y no funciona el botón salir.
+A veces no me muero.
+El viento me empuja contra el terreno y no muero
+Salgo al main menu, vuelvo a jugar y no me puedo mover.
+Las partículas de propulsión quedan prendidas.
+
+NullReferenceException: Object reference not set to an instance of an object
+Terrain.OnCollisionEnter2D (UnityEngine.Collision2D collision) (at Assets/Scripts/Terrain.cs:10)
+
+no puedo salir al main menu:
+NullReferenceException: Object reference not set to an instance of an object
+UiGameplay.LoadMainMenuScene () (at Assets/Scripts/UI/UiGameplay.cs:37)
+UnityEngine.Events.InvokableCall.Invoke () (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+UnityEngine.Events.UnityEvent.Invoke () (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+UnityEngine.UI.Button.Press () (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs:68)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs:110)
+UnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update() (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:377)
+
+NullReferenceException: Object reference not set to an instance of an object
+UiMainMenu.LoadGamePlayScene () (at Assets/Scripts/UI/UiMainMenu.cs:6)
+UnityEngine.Events.InvokableCall.Invoke () (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+UnityEngine.Events.UnityEvent.Invoke () (at <a1ac446df41c4a67becf2f8317dc1792>:0)
+UnityEngine.UI.Button.Press () (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs:68)
+UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs:110)
+UnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:50)
+UnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs:261)
+UnityEngine.EventSystems.EventSystem:Update() (at H:/Programs/Unity/2019.4.22f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs:377)
+
+Todos los scripts conocen al GameManager.
+
+
+Rodriguez Roge
+----------------------------------------------------------------------------
+Alta intro.
+A veces me queda fuera de pantalla la plataforma para aterrizar.
+Me voy del nivel y no pasa nada.
+
+ArgumentException: Internal error: Point too close to neighbor
+UnityEngine.U2D.Spline.SetPosition (System.Int32 index, UnityEngine.Vector3 point) (at Library/PackageCache/com.unity.2d.spriteshape@3.0.16/Runtime/Spline.cs:78)
+TerrainInstantiator.Awake () (at Assets/Scripts/TerrainInstantiator.cs:27)
+
+GasBar es UI no?
+
+Fade.faded?
+
+Plataform, PlayerController, etc, conocen GameManager?
+
+
+Sgro
+----------------------------------------------------------------------------
+
+MissingReferenceException: The object of type 'ParticleSystem' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+UnityEngine.ParticleSystem.Play () (at <445e1e745cf9498a8ce37874aacbb3a1>:0)
+ShipParticlesController.TogglePauseSystem () (at Assets/Scripts/Gameplay/ShipParticlesController.cs:65)
+PlayerInput.Pause () (at Assets/Scripts/Gameplay/PlayerInput.cs:40)
+UnityEngine.Events.InvokableCall.Invoke () (at <a1ac446df41c4a67becf2f
+
+UI_Component? componente de que? que hace?
+
+Sería ideal que el manejo de escenas sea decidido desde la GameManager y no la UI
+
+TerrainConfiguration como harías para que no sea una pared de variables eso y sea un poco más legible?
+
+Enums.cs ???
+
+Vector3 RandomPos = new Vector3(posX, terrainConfig.perlinMultiplier * Mathf.PerlinNoise(UnityEngine.Random.Range(terrainSpline.GetPosition(i + 2).x - terrainConfig.nextPointRange, terrainSpline.GetPosition(i + 2).x + terrainConfig.nextPointRange), i + 2));
+variables temporales para simplificar lectura de código.
+
+SetLandingSites()
+lindo copy/paste
+
+te parece realmente necesario un MovementType?
+
+Tourret
+----------------------------------------------------------------------------
+Carpeta Library en el repo no!
+Me puedo ir del nivel
+
+A veces no puedo ganar por este error:
+MissingReferenceException: The object of type 'GameObject' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+CanvasManager.showVictory (System.Int32 multiplier, System.Single fuel) (at Assets/Scripts/CanvasManager.cs:81)
+LanderController.OnCollisionEnter2D (UnityEngine.Collision2D collision) (at Assets/Scripts/LanderController.cs:101)
+
+x2LandingZone.cs
+x3LandingZone.cs
+x4LandingZone.cs
+x5LandingZone.cs
+wtf?
+
+GameManager.cs
+goToMenu += toMenu; -> digamos que estás enmascarando un llamado a un método privado a través de un action estático y público.
+
+
+LanderController::OnCollisionEnter2D
+
+if (Mathf.Round(transform.eulerAngles.z) == 0 && (rb.velocity.x > -xVelocityLimit && rb.velocity.x < xVelocityLimit) && (rb.velocity.y > -yVelocityLimit) && (hit.bounds.min.x <= box.bounds.min.x && hit.bounds.max.x >= box.bounds.max.x))
+
+else else else...?
+
+LanderController no debe conocer GameManager.
+
+	

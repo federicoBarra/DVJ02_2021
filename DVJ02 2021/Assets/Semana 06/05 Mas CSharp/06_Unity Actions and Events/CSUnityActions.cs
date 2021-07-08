@@ -13,7 +13,7 @@ public class CSUnityActions : MonoBehaviour
     
     private void Start()
     {
-        eventos.AddListener(ListenerPorCodigo); //guarda que no aparece en el inspector cuando lo agregamos por codigo
+        eventos.AddListener(ListenerPorCodigo); //guarda que no aparece en el inspector cuando lo agregamos por codigo aaaaaaaa
 
         //cuidado con RemoveAllListeners que solo removerá las acciones agregadas por código.
         //eventos.RemoveAllListeners();
